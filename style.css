@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* kumpulan loading */
+#loader {
+  position: fixed;
+  inset: 0 0 0 0;
+  background: radial-gradient(circle at center, #0c0c0c, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#screens {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.scene {
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.loading-container {
+  width: 80%;
+  max-width: 600px;
+}
+
+.progress {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ffffff;
+  width: 0%;
+  transition: width 1.3s linear;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+#Main1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Start */
+.intro-screen {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  perspective: 100px;
+}
+
+.parallax-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.parallax-layer.background {
+  background-image: url('Background1.png');
+  transform: translateZ(-50px) scale(1.5);
+}
+
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cursor-trail path {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 2;
+  fill: none;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6));
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0 0 0 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+  z-index: 1;
+}
+
+.intro-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  animation: fadeInUp 2s ease forwards;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+/* kotak2 */
+#rising-squares {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  /* gaada reaksi ke cursor */
+  z-index: 5;
+  /* layer 5 */
+}
+
+.intro-title {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.intro-subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+
+#start-btn {
+  font-size: 1.1rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+#start-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* cursor */
+#cursor-trail path {
+  fill: none;
+  stroke: #747474;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* menu */
+#destination {
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.destination-title h2 {
+  font-weight: 600;
+  font-size: 3rem;
+}
